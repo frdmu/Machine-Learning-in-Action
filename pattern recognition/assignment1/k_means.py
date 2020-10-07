@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+#计算距离
 def distEclud(vecA, vecB):
     return np.sqrt(np.sum(np.power(vecA - vecB, 2)))
-
+#得到k个随机质心
 def randCent(dataSet, k):
     n = np.shape(dataSet)[1]
     centroids = np.mat(np.zeros((k, n)))
@@ -14,10 +14,18 @@ def randCent(dataSet, k):
         rangeJ = float(maxJ - minJ)
         centroids[:, j] = minJ + rangeJ * np.random.rand(k, 1)
     return centroids
-
+"""
+函数：k-均值算法
+入口参数：dataSet:   参与聚类的数据集
+		  k:		 聚类个数
+		  disMeas:	 计算数据集中的点与质心之间的距离
+		  createCent:得到k个随机质心
+返回参数：centroids:  聚类完成以后的质心
+		  clusterAssment: 聚类结果，包括 1.某点所属类别 2.与质心的距离的平方(目前好像没用)
+"""
 def KMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
     m = np.shape(dataSet)[0]    
-
+	
     clusterAssment = np.mat(np.zeros((m, 2)))
     centroids = createCent(dataSet, k)
 
@@ -39,7 +47,7 @@ def KMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
             ptsInClust = dataSet[np.nonzero(clusterAssment[:, 0].A == cent)[0]]
             centroids[cent, :] = np.mean(ptsInClust, axis=0)    
     return centroids, clusterAssment    
-
+#画出聚类结果
 def plotDataSet(dataSet):
     Centroids, clusterAssment = KMeans(dataSet, 2)
 
