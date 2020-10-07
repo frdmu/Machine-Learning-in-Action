@@ -24,7 +24,7 @@ def randCent(dataSet, k):
     maxJ = np.max(dataSet[:, j])
     rangeJ = float(maxJ - minJ)
     centroids[:, j] = minJ + rangeJ * np.random.rand(k, 1)
-    return centroids
+  return centroids
 
 def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
   #get the numbers of dataset
