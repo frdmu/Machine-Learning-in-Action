@@ -198,39 +198,46 @@ if __name__ == '__main__':
 
     trainMnistDataSet = MnistDataDivide(trainMnistData, trainMnistLabel)
 
-    model0 = GMM(trainMnistDataSet[0], 5, 17)
-    model1 = GMM(trainMnistDataSet[1], 5, 17)
-    model2 = GMM(trainMnistDataSet[2], 5, 17)
-    model3 = GMM(trainMnistDataSet[3], 5, 17)
-    model4 = GMM(trainMnistDataSet[4], 5, 17)
-    model5 = GMM(trainMnistDataSet[5], 5, 17)
-    model6 = GMM(trainMnistDataSet[6], 5, 17)
-    model7 = GMM(trainMnistDataSet[7], 5, 17)
-    model8 = GMM(trainMnistDataSet[8], 5, 17)
-    model9 = GMM(trainMnistDataSet[9], 5, 17)
-
+	model0 = GMM(trainMnistDataSet[0], 5, 17)
     model0.train()
+	model0.savePara('MnistPara/alpha5_0.csv', 'MnistPara/mu5_0.csv', 'MnistPara/sigma5_0.csv')
+	
+	model1 = GMM(trainMnistDataSet[1], 5, 17)
     model1.train()
+	model1.savePara('MnistPara/alpha5_1.csv', 'MnistPara/mu5_1.csv', 'MnistPara/sigma5_1.csv')
+	
+	model2 = GMM(trainMnistDataSet[2], 5, 17)
     model2.train()
+	model2.savePara('MnistPara/alpha5_2.csv', 'MnistPara/mu5_2.csv', 'MnistPara/sigma5_2.csv')
+	
+	model3 = GMM(trainMnistDataSet[3], 5, 17)
     model3.train()
+	model3.savePara('MnistPara/alpha5_3.csv', 'MnistPara/mu5_3.csv', 'MnistPara/sigma5_3.csv')
+	
+	model4 = GMM(trainMnistDataSet[4], 5, 17)
     model4.train()
+	model4.savePara('MnistPara/alpha5_4.csv', 'MnistPara/mu5_4.csv', 'MnistPara/sigma5_4.csv')
+	
+	model5 = GMM(trainMnistDataSet[5], 5, 17)
     model5.train()
+	model5.savePara('MnistPara/alpha5_5.csv', 'MnistPara/mu5_5.csv', 'MnistPara/sigma5_5.csv')
+	
+	model6 = GMM(trainMnistDataSet[6], 5, 17)
     model6.train()
+	model6.savePara('MnistPara/alpha5_6.csv', 'MnistPara/mu5_6.csv', 'MnistPara/sigma5_6.csv')
+	
+	model7 = GMM(trainMnistDataSet[7], 5, 17)
     model7.train()
+	model7.savePara('MnistPara/alpha5_7.csv', 'MnistPara/mu5_7.csv', 'MnistPara/sigma5_7.csv')
+	
+	model8 = GMM(trainMnistDataSet[8], 5, 17)
     model8.train()
+	model8.savePara('MnistPara/alpha5_8.csv', 'MnistPara/mu5_8.csv', 'MnistPara/sigma5_8.csv')
+	
+	model9 = GMM(trainMnistDataSet[9], 5, 17)
     model9.train()
-
-    model0.savePara('MnistPara/alpha5_0.csv', 'MnistPara/mu5_0.csv', 'MnistPara/sigma5_0.csv')
-    model1.savePara('MnistPara/alpha5_1.csv', 'MnistPara/mu5_1.csv', 'MnistPara/sigma5_1.csv')
-    model2.savePara('MnistPara/alpha5_2.csv', 'MnistPara/mu5_2.csv', 'MnistPara/sigma5_2.csv')
-    model3.savePara('MnistPara/alpha5_3.csv', 'MnistPara/mu5_3.csv', 'MnistPara/sigma5_3.csv')
-    model4.savePara('MnistPara/alpha5_4.csv', 'MnistPara/mu5_4.csv', 'MnistPara/sigma5_4.csv')
-    model5.savePara('MnistPara/alpha5_5.csv', 'MnistPara/mu5_5.csv', 'MnistPara/sigma5_5.csv')
-    model6.savePara('MnistPara/alpha5_6.csv', 'MnistPara/mu5_6.csv', 'MnistPara/sigma5_6.csv')
-    model7.savePara('MnistPara/alpha5_7.csv', 'MnistPara/mu5_7.csv', 'MnistPara/sigma5_7.csv')
-    model8.savePara('MnistPara/alpha5_8.csv', 'MnistPara/mu5_8.csv', 'MnistPara/sigma5_8.csv')
-    model9.savePara('MnistPara/alpha5_9.csv', 'MnistPara/mu5_9.csv', 'MnistPara/sigma5_9.csv')
-
+	model9.savePara('MnistPara/alpha5_9.csv', 'MnistPara/mu5_9.csv', 'MnistPara/sigma5_9.csv')
+    
     #model0.loadPara('MnistPara/alpha5_0.csv', 'MnistPara/mu5_0.csv', 'MnistPara/sigma5_0.csv')
     #model1.loadPara('MnistPara/alpha5_1.csv', 'MnistPara/mu5_1.csv', 'MnistPara/sigma5_1.csv')
     #model2.loadPara('MnistPara/alpha5_2.csv', 'MnistPara/mu5_2.csv', 'MnistPara/sigma5_2.csv')
