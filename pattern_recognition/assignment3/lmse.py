@@ -9,6 +9,13 @@ class lmse(object):
     def train(self):
         self.w = np.dot(np.linalg.pinv(self.X), self.y)
 
+
+    def predict(self, testData):
+        testData = np.concatenate((np.ones((testData.shape[0], 1)), testData), axis=1)
+        prediction = np.dot(testData, self.w)
+        prediction = np.argmax(prediction, axis=1)
+        return prediction
+    
     def plot(self):
         idx_1 = (self.y.flatten()==1)
         x1_1 = self.X[idx_1, 1]
@@ -28,8 +35,30 @@ class lmse(object):
         plt.plot(plane_x, plane_y)
 
         plt.show()
-    
+
+def eval(prediction, label):
+    total = label.shape[0]
+    temp = np.ones(label.shape[0])
+    error = np.sum(temp[prediction!=label])
+    return (total-error)/total
+
+def readData(sampleFile, labelFile):
+    sampleReader = csv.reader(open(sampleFile, 'rb'))
+    labelReader = csv.reader(open(labelFile, 'rb'))
+
+    sample = []
+    for line in sampleReader:
+        sample.append(line)
+
+    label = []
+    for line in labelReader:
+        label.append(line)
+
+    return sample, label
+
+
 if __name__ == '__main__':
+    """ 
     X = [[1, 1],
          [2, 2],
          [2, 0],
@@ -46,3 +75,21 @@ if __name__ == '__main__':
     model.train()
     print(model.w)
     model.plot()
+    """
+    trainData, trainLabel_temp = readData('TrainSamples.csv', 'TrainLabels.csv')
+    trainData = np.array(trainData).astype(float)
+    trainLabel_temp = np.array(trainLabel_temp).astype(int)
+    trainLabel = np.zeros((trainLabel_temp.shape[0], 10))
+    i = 0
+    while i<trainLabel_temp.shape[0]:
+        trainLabel[i][trainLabel_temp[i]] = 1
+        i += 1
+
+    testData, testLabel = readData('TestSamples.csv', 'TestLabels.csv')
+    testData = np.array(testData).astype(float)
+    testLabel = np.array(testLabel).astype(int).flatten()
+        
+    model = lmse(trainData, trainLabel)
+    model.train()
+    prediction = model.predict(testData)
+    print(eval(prediction, testLabel))
