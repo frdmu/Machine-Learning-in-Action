@@ -44,8 +44,8 @@ def eval(prediction, label):
     return (total-error)/total
 
 def readData(sampleFile, labelFile):
-    sampleReader = csv.reader(open(sampleFile, 'rb'))
-    labelReader = csv.reader(open(labelFile, 'rb'))
+    sampleReader = csv.reader(open(sampleFile, 'r'))
+    labelReader = csv.reader(open(labelFile, 'r'))
 
     sample = []
     for line in sampleReader:
